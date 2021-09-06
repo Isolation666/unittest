@@ -1,3 +1,4 @@
+
 def integrate(fun, x1, x2, intervals=1):
     """Compute the integral of fun from x1 to x2 using Simpson's rule.
 
@@ -17,5 +18,10 @@ def integrate(fun, x1, x2, intervals=1):
     """
 
     # Do NOT write this code until AFTER you write the unit tests.
-
-    return 0
+    h = (x2 - x1) / 2
+    s = fun(x1) + fun(x2)
+    for i in range(1, intervals):
+        s = s + 4 * fun(x1+i*h)
+    for j in range(1, intervals):
+        s = s + 2 * fun(x1+j*h)
+    return h/3 * s
